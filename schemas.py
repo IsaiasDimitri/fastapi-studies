@@ -44,7 +44,7 @@ class Service(BaseModel):
     description: str
     minimun_seniority: Seniority | None = None
 
-class Quote(BaseModel):
+class Quote(BaseModel): # TODO improve that name
     services: list[Service] | None = None
     parts: dict[str, float] | None = None
     created_at: date
