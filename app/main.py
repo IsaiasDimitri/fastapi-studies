@@ -1,12 +1,10 @@
 from fastapi import FastAPI
-from routes import (
-    motorcycle_routes,
-    mechanic_routes,
-    client_routes,
-    quote_routes,
-    service_order_routes,
-    service_routes
-)
+from app.routes.motorcycles import motorcycle_routes
+from app.routes.mechanics import mechanic_routes
+from app.routes.clients import client_routes
+from app.routes.quotes import quote_routes
+from app.routes.service_orders import service_order_routes
+from app.routes.services import service_routes
 
 app = FastAPI()
 

@@ -1,16 +1,11 @@
 from pydantic import BaseModel
 from enum import Enum
 from datetime import date
+from app.schemas.motorcycle import Motorcycle
 
 class Seniority(str, Enum):
     junior = 'junior'
     chief = 'chief'
-
-class MotorcycleCategory(str, Enum):
-    urban = 'urban'
-    off_road = 'off_road'
-    trail = 'trail'
-    big_trail = 'big_trail'
 
 class OrderStatus(str, Enum):
     opened = 'opened'
@@ -18,14 +13,6 @@ class OrderStatus(str, Enum):
     approved = 'approved'
     in_progress = 'in_progress'
     cancelled = 'cancelled'
-
-class Motorcycle(BaseModel):
-    brand: str
-    model: str
-    category: MotorcycleCategory
-    cylinder_capacity: float
-    year_model: str
-    service_manual: str
 
 class Client(BaseModel):
     name: str
