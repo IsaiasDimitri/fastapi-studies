@@ -1,4 +1,6 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
+from contextlib import asynccontextmanager
+from app.db import init_db, get_session
 from app.routes.motorcycles import motorcycle_routes
 from app.routes.mechanics import mechanic_routes
 from app.routes.clients import client_routes
@@ -6,7 +8,13 @@ from app.routes.quotes import quote_routes
 from app.routes.service_orders import service_order_routes
 from app.routes.services import service_routes
 
-app = FastAPI()
+
+@asynccontextmanager
+async def db_lifespan(app: FastAPI):
+    init_db()
+    yield
+
+app = FastAPI(lifespan=db_lifespan)
 
 app.include_router(motorcycle_routes)
 app.include_router(mechanic_routes)

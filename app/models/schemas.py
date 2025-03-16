@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from enum import Enum
 from datetime import date
-from app.schemas.motorcycle import Motorcycle
+from app.models.motorcycle import Motorcycle
 
 class Seniority(str, Enum):
     junior = 'junior'
